@@ -1,0 +1,12 @@
+{
+  "name": "ArtGallery",
+  "displayName": "ArtGallery",
+  "expo": {
+    "name": "ArtGallery",
+    "slug": "ArtGallery",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
