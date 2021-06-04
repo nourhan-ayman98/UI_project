@@ -7,8 +7,6 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Feather from 'react-native-vector-icons/Feather';
 import * as Animated from 'react-native-animatable';
 
-
-
 class Signin extends Component {
     state = {
         data: {
@@ -63,7 +61,7 @@ class Signin extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../Images/445660-blue-art-background-blue-wallpaper.jpg')} style={styles.image}>
                     <View style={styles.header}>
-                        <Text style={[styles.text_header, { marginTop: 35 }]}> Welcome in Arte! </Text>
+                        <Text style={[styles.text_header, { marginTop: 35}]}> Welcome in Arte! </Text>
                     </View>
                     <View style={styles.footer}>
                         <Text style={styles.text_footer}> Email  </Text>
@@ -120,7 +118,7 @@ class Signin extends Component {
 
                         <View style={styles.button}>
                             <TouchableOpacity 
-                                onPress={() => navigate("Home")}>
+                                onPress={() => navigate("Admin")}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}
