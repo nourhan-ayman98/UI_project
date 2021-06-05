@@ -190,6 +190,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
 
     },
+    textSign: {
+        color: 'white',
+        fontWeight: 'bold',
+    },
     textInput: {
         flex: 1,
         marginTop: Platform.OS === 'ios' ? 0 : -12,

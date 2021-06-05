@@ -118,7 +118,7 @@ class Signin extends Component {
 
                         <View style={styles.button}>
                             <TouchableOpacity 
-                                onPress={() => navigate("Admin")}>
+                                onPress={() => navigate("user")}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}

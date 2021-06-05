@@ -231,7 +231,7 @@ class SignUP extends Component {
                         <View style={styles.button}>
                         {this.check_password(this.state.data2.password,this.state.data3.confirm_password) ? 
                             <TouchableOpacity
-                                onPress={() => navigate("Home")}>
+                                onPress={() => navigate("user")}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}
