@@ -25,6 +25,7 @@ import MoreDetails from './MoreDetails';
 import Pay from './Pay';
 import Congrats_Pay from './Congrats_pay';
 import MoreDetails_2 from './MoreDetails_2';
+import final from './final';
 
 
 const Stack = createStackNavigator();
@@ -43,6 +44,7 @@ class Welcome_page extends Component {
                     <Stack.Screen name="Reset Password"  component={ResetPass} />
                     <Stack.Screen name="Congratulations" options={{ headerShown: false }} component={Congrats} />
                     <Stack.Screen name="Change Password" component={ResetPass2} />
+                    <Stack.Screen name="Final" options={{ headerShown: false }} component={final} />
                     <Stack.Screen name="Admin" component={Admin} />
                     <Stack.Screen name="Edit My Profile" component={Edit_Profile} />
                     <Stack.Screen name="View Customers" component={View_Customers} />

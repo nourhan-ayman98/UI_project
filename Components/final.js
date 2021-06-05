@@ -20,15 +20,15 @@ class final extends Component {
                             borderRadius: 200 / 2
                         }} />
                     <Text style={styles.text_header}>Congratiolations </Text>
-                    <Text style={styles.text_footer}>You now own your Item Successfully </Text>
+                    <Text style={styles.text_footer}>You have changed your data </Text>
                     <View style={styles.button}>
                             <TouchableOpacity
-                                onPress={() => navigate("Sign In")}>
+                                onPress={() => navigate("Admin")}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}
                                 >
-                                    <Text style={styles.textSign}>Log In</Text>
+                                    <Text style={styles.textSign}> Go Back</Text>
                                 </LinearGradient>
                             </TouchableOpacity>
                         </View>

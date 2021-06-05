@@ -209,7 +209,7 @@ class Add_Artwork extends Component {
                     <View style={styles.button}>
                         {this.check_password(this.state.data2.password, this.state.data3.confirm_password) ?
                             <TouchableOpacity
-                                onPress={() => navigate("Artist")}>
+                                onPress={() => navigate("Admin")}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}
