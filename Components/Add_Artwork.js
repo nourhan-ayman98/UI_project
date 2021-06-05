@@ -9,14 +9,14 @@ import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 
 // type PickerProps = {
-  
+
 //     selectedValue: any,
 //     onValueChange: (selectedValue: any) => void,
- 
+
 //   };
 
 //   type PickerItemProps = {
-    
+
 //     onPress: (value: any) => void
 //   };
 
@@ -25,7 +25,7 @@ class Add_Artwork extends Component {
     //     Artist: 'Van Gogh'
 
     // } 
-   
+
     states = { user: '' }
     updateUser = (user) => {
         this.setState({ user: user })
@@ -46,6 +46,9 @@ class Add_Artwork extends Component {
         },
         data5: {
             confirm_secureTextEntry: true,
+        },
+        data8: {
+            pickerValue: ''
         }
     }
     textInputChange = (val) => {
@@ -104,18 +107,23 @@ class Add_Artwork extends Component {
             return false;
         }
     }
-    func(){
-        if(this.state.role==='None of the Above'){
+    func() {
+        if (this.state.role === 'None of the Above') {
             this.props.navigation.navigate('Artist');
-         }
+        }
     }
     // onValueChange(selectedValue: any) {
     //     if (this.state.selectedValue === selectedValue) {
     //       return;
     //     }
-   
+    navigate_ = (navigate) => {
+        if (this.state.data8.pickerValue.valueOf() == "None of the Above") {
+            navigate("Artist");
+        }
+
+    }
     render() {
-        
+
         const { navigate } = this.props.navigation;
         // const [selectedValue, setSelectedValue] = useState("java");
         return (
@@ -153,7 +161,7 @@ class Add_Artwork extends Component {
                             <Picker.Item label="Works of the 19th Century " value="Works of the 19th Century " />
                             <Picker.Item label="Statues" value="Statues" />
                         </Picker>
-                       
+
 
                         <Text style={[styles.text_footer, { marginTop: 35 }]}> Year Of Art </Text>
                         <View style={styles.action}>
@@ -178,53 +186,56 @@ class Add_Artwork extends Component {
                             selectedValue={this.states.Artist}
                             // selectedValue={selectedValue}
                             style={{ height: 50, width: 150 }}
-                            onValueChange={(itemValue, itemIndex) => this.setState({ Artist: itemValue })}
+                            onValueChange={(value) => {
+                                this.setState({ data8:{ pickerValue: value } });
+                                console.log(this.state.data8)
+                                this.navigate_(navigate);
+                            }}
                         // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                         >
                             <Picker.Item label="Georges Seurat" value="Georges Seurat" />
-                            <Picker.Item label="Leonardo da Vinci" value="Leonardo da Vinci" />
-                            <Picker.Item label="Michelangelo" value="Michelangelo" />
-                            <Picker.Item label="Rembrandt" value="Rembrandt" />
-                            <Picker.Item label="Jean-Antoine Watteau" value="Jean-Antoine Watteau" />
-                            <Picker.Item label="Vincent van Gogh" value="Vincent van Gogh" />
-                            <Picker.Item label=" None of the Above" value="None of the Above" 
-                            onValueChange={() => navigate("Artist")}/>
+                        <Picker.Item label="Leonardo da Vinci" value="Leonardo da Vinci" />
+                        <Picker.Item label="Michelangelo" value="Michelangelo" />
+                        <Picker.Item label="Rembrandt" value="Rembrandt" />
+                        <Picker.Item label="Jean-Antoine Watteau" value="Jean-Antoine Watteau" />
+                        <Picker.Item label="Vincent van Gogh" value="Vincent van Gogh" />
+                        <Picker.Item label=" None of the Above" value="None of the Above" />
 
                         </Picker>
 
-                        <Text style={styles.text_footer}> Price Of Art  </Text>
-                        <View style={styles.action}>
-                            <FontAwesome
-                                name="money"
-                                color="#fff"
-                                size={20}
-                            />
-                            <TextInput
-                                placeholder="Insert the Amount of Money .."
-                                placeholderTextColor="#D3D3D3"
-                                style={styles.textInput}
-                                autoCapitalize='none'
+                    <Text style={styles.text_footer}> Price Of Art  </Text>
+                    <View style={styles.action}>
+                        <FontAwesome
+                            name="money"
+                            color="#fff"
+                            size={20}
+                        />
+                        <TextInput
+                            placeholder="Insert the Amount of Money .."
+                            placeholderTextColor="#D3D3D3"
+                            style={styles.textInput}
+                            autoCapitalize='none'
 
-                            />
-                        </View>
+                        />
+                    </View>
 
 
-                        <View style={styles.button}>
-                            {this.check_password(this.state.data2.password, this.state.data3.confirm_password) ?
-                                <TouchableOpacity
-                                    onPress={() => navigate("Artist")}>
-                                    <LinearGradient
-                                        colors={['#87CEFA', '#1E90FF']}
-                                        style={styles.signIn}
-                                    >
-                                        <Text style={styles.textSign}>Save</Text>
-                                    </LinearGradient>
-                                </TouchableOpacity>
-                                : null}
-                        </View>
+                    <View style={styles.button}>
+                        {this.check_password(this.state.data2.password, this.state.data3.confirm_password) ?
+                            <TouchableOpacity
+                                onPress={() => navigate("Artist")}>
+                                <LinearGradient
+                                    colors={['#87CEFA', '#1E90FF']}
+                                    style={styles.signIn}
+                                >
+                                    <Text style={styles.textSign}>Save</Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                            : null}
+                    </View>
                     </View>
                 </ImageBackground>
-            </View>
+            </View >
         );
     }
 }

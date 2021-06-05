@@ -12,7 +12,7 @@ class Signin extends Component {
         data: {
             email: '',
             password: '',
-
+            Admin:false
 
         },
         data2: {
@@ -20,6 +20,9 @@ class Signin extends Component {
         },
         data3: {
             secureTextEntry: true,
+        },
+        data4:{
+            password:""
         }
     }
     textInputChange = (val) => {
@@ -41,7 +44,7 @@ class Signin extends Component {
     }
     handlePassChange = (val) => {
         this.setState({
-            data2: {
+            data4: {
                 password: val
             }
 
@@ -54,6 +57,11 @@ class Signin extends Component {
             }
         })
     }
+    Admin = () => {
+        if (this.state.data.email.valueOf()=="NNNN" && this.state.data4.password.valueOf() =="22") {
+            this.state.data.Admin=true;
+        }
+    }
     render() {
         const { navigate } = this.props.navigation;
         return (
@@ -61,7 +69,7 @@ class Signin extends Component {
             <View style={styles.container}>
                 <ImageBackground source={require('../Images/445660-blue-art-background-blue-wallpaper.jpg')} style={styles.image}>
                     <View style={styles.header}>
-                        <Text style={[styles.text_header, { marginTop: 35}]}> Welcome in Arte! </Text>
+                        <Text style={[styles.text_header, { marginTop: 35 }]}> Welcome in Arte! </Text>
                     </View>
                     <View style={styles.footer}>
                         <Text style={styles.text_footer}> Email  </Text>
@@ -103,6 +111,7 @@ class Signin extends Component {
                                 secureTextEntry={this.state.data3.secureTextEntry ? true : false}
                                 style={styles.textInput}
                                 autoCapitalize='none'
+                                onChangeText={((val)=>this.handlePassChange(val))}
                             />
                             <TouchableOpacity
                                 onPress={this.updateSecureTextEntry}>
@@ -114,11 +123,19 @@ class Signin extends Component {
                             </TouchableOpacity>
 
                         </View>
-                        
+
 
                         <View style={styles.button}>
-                            <TouchableOpacity 
-                                onPress={() => navigate("user")}>
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.Admin();
+                                    if (this.state.data.Admin) {
+                                        navigate("Admin")
+                                    }
+                                    else {
+                                        navigate("user")
+                                    }
+                                }}>
                                 <LinearGradient
                                     colors={['#87CEFA', '#1E90FF']}
                                     style={styles.signIn}
@@ -128,14 +145,14 @@ class Signin extends Component {
                             </TouchableOpacity>
                         </View>
                         <View style={styles.button}>
-                        <TouchableOpacity onPress={()=>navigate("Reset Password")}>
-                            <Text   style={[styles.text_forgot, {
-                                        color: '#fff', 
-                                    }]}
-                                    >Forgot Password?</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => navigate("Reset Password")}>
+                                <Text style={[styles.text_forgot, {
+                                    color: '#fff',
+                                }]}
+                                >Forgot Password?</Text>
+                            </TouchableOpacity>
                         </View>
-                        
+
                     </View>
                 </ImageBackground>
             </View>
@@ -149,7 +166,7 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flex: 1,
-       
+
         flexDirection: 'column'
     },
     header: {
