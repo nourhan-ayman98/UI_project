@@ -134,7 +134,7 @@ class ArtistRegistration extends Component {
                         <Text style={styles.text_footer}> Year of Birth  </Text>
                         <View style={styles.action}>
                             <Fontisto
-                                name="calender"
+                                name="calendar"
                                 color="#fff"
                                 size={20}
                             />

@@ -21,10 +21,6 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 //   };
 
 class Add_Artwork extends Component {
-    // states={
-    //     Artist: 'Van Gogh'
-
-    // } 
 
     states = { user: '' }
     updateUser = (user) => {
@@ -48,7 +44,7 @@ class Add_Artwork extends Component {
             confirm_secureTextEntry: true,
         },
         data8: {
-            pickerValue: ''
+            position:''
         }
     }
     textInputChange = (val) => {
@@ -112,20 +108,9 @@ class Add_Artwork extends Component {
             this.props.navigation.navigate('Artist');
         }
     }
-    // onValueChange(selectedValue: any) {
-    //     if (this.state.selectedValue === selectedValue) {
-    //       return;
-    //     }
-    navigate_ = (navigate) => {
-        if (this.state.data8.pickerValue.valueOf() == "None of the Above") {
-            navigate("Artist");
-        }
-
-    }
     render() {
 
         const { navigate } = this.props.navigation;
-        // const [selectedValue, setSelectedValue] = useState("java");
         return (
 
             <View style={styles.container}>
@@ -152,10 +137,8 @@ class Add_Artwork extends Component {
                         <br></br>
                         <Picker
                             selectedValue={this.states.Artist}
-                            // selectedValue={selectedValue}
                             style={{ height: 50, width: 150 }}
                             onValueChange={(itemValue, itemIndex) => this.setState({ Artist: itemValue })}
-                        // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                         >
                             <Picker.Item label="Paintings" value="Paintings" />
                             <Picker.Item label="Works of the 19th Century " value="Works of the 19th Century " />
@@ -183,15 +166,17 @@ class Add_Artwork extends Component {
                         <br></br>
 
                         <Picker
-                            selectedValue={this.states.Artist}
-                            // selectedValue={selectedValue}
+                            selectedValue={this.state.data8}
+
                             style={{ height: 50, width: 150 }}
-                            onValueChange={(value) => {
-                                this.setState({ data8:{ pickerValue: value } });
-                                console.log(this.state.data8)
-                                this.navigate_(navigate);
-                            }}
-                        // onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+                            onValueChange={(itemValue, itemPosition) =>{  
+                                this.state.data8.position=itemPosition.valueOf();
+                                  if(this.state.data8.position==6)
+                                  {
+                                    navigate("Artist");
+                                  }
+                                } 
+                             }
                         >
                             <Picker.Item label="Georges Seurat" value="Georges Seurat" />
                         <Picker.Item label="Leonardo da Vinci" value="Leonardo da Vinci" />
@@ -199,8 +184,9 @@ class Add_Artwork extends Component {
                         <Picker.Item label="Rembrandt" value="Rembrandt" />
                         <Picker.Item label="Jean-Antoine Watteau" value="Jean-Antoine Watteau" />
                         <Picker.Item label="Vincent van Gogh" value="Vincent van Gogh" />
+                        
                         <Picker.Item label=" None of the Above" value="None of the Above" />
-
+                        
                         </Picker>
 
                     <Text style={styles.text_footer}> Price Of Art  </Text>
